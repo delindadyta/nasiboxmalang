@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nasibox.Malang — Nasi Box & Catering Harian Malang</title>
+<meta name="description" content="Nasibox.Malang — nasi box, snack box, dan catering nasi kotak khas Malang. Pesan langsung via WhatsApp, GoFood, atau GoJek.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Caveat:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF0E3;
+    --cream-deep:#F5E6D3;
+    --card:#FFFBF4;
+    --ink:#2A2015;
+    --ink-soft:#5C5142;
+    --olive:#5C7A3E;
+    --olive-dark:#3E5629;
+    --terracotta:#C0483B;
+    --black:#1A1510;
+    --line: rgba(42,32,21,0.14);
+    --shadow: 0 12px 30px -14px rgba(42,32,21,0.28);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px;}
+  .display{font-family:'Fraunces',serif;}
+  .script{font-family:'Caveat',cursive;}
+  .eyebrow{
+    font-family:'Caveat',cursive;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--terracotta);
+    display:inline-block;
+    margin-bottom:6px;
+    transform:rotate(-2deg);
+  }
+  h1,h2,h3{margin:0;line-height:1.05;}
+  p{margin:0;line-height:1.6;}
+
+  /* ===== Botanical divider ===== */
+  .sprig{display:block;margin:0 auto;opacity:0.8;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,240,227,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1160px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif;
+    font-size:1.35rem;
+    letter-spacing:0.04em;
+    font-weight:600;
+    color:var(--ink);
+    text-decoration:none;
+  }
+  .logo span{color:var(--olive);}
+  .navlinks{display:flex; gap:32px; font-weight:500; font-size:0.95rem;}
+  .navlinks a{text-decoration:none; color:var(--ink-soft); transition:color .2s;}
+  .navlinks a:hover{color:var(--terracotta);}
+  .nav-cta{
+    display:flex; gap:10px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.92rem;
+    text-decoration:none;
+    border:1.5px solid transparent;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-primary{background:var(--olive); color:#fff;}
+  .btn-primary:hover{background:var(--olive-dark); transform:translateY(-2px); box-shadow:var(--shadow);}
+  .btn-outline{background:transparent; border-color:var(--ink); color:var(--ink);}
+  .btn-outline:hover{background:var(--ink); color:var(--cream); transform:translateY(-2px);}
+  .btn-dark{background:var(--black); color:#fff;}
+  .btn-dark:hover{background:#000; transform:translateY(-2px); box-shadow:var(--shadow);}
+  .menu-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:64px 0 40px;
+    overflow:visible;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero-copy h1{
+    font-size:3.4rem;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .hero-copy h1 em{
+    font-style:italic;
+    color:var(--olive);
+    font-weight:500;
+  }
+  .hero-copy p.lead{
+    margin-top:20px;
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    max-width:480px;
+  }
+  .hero-cta{
+    margin-top:32px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    align-items:center;
+  }
+  .hero-hours{
+    margin-top:26px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:0.9rem;
+    color:var(--ink-soft);
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:9px 16px 9px 12px;
+    border-radius:100px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:#4C9A4C;box-shadow:0 0 0 3px rgba(76,154,76,0.18);}
+
+  .hero-photo{
+    position:relative;
+  }
+  .hero-photo .frame{
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border:6px solid var(--card);
+    transform:rotate(1.2deg);
+  }
+  .hero-photo img{
+    width:100%;
+    aspect-ratio:4/4.6;
+    object-fit:cover;
+    display:block;
+  }
+  .price-sticker{
+    position:absolute;
+    background:var(--black);
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    box-shadow:0 10px 24px -8px rgba(0,0,0,0.45);
+    border:3px solid var(--cream);
+  }
+  .sticker-1{
+    width:118px;height:118px;
+    top:-18px; right:-6px;
+    transform:rotate(-9deg);
+  }
+  .sticker-1 .amt{font-family:'Fraunces',serif;font-size:1.55rem;font-weight:700;line-height:1;}
+  .sticker-1 .lbl{font-size:0.62rem; letter-spacing:0.06em; text-transform:uppercase; margin-top:3px; opacity:0.85;}
+  .sig-tag{
+    position:absolute;
+    left:-14px; bottom:34px;
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:10px 18px;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+    transform:rotate(-3deg);
+  }
+  .sig-tag .script{color:var(--terracotta); font-size:1.3rem; display:block;}
+  .sig-tag .name{font-family:'Fraunces',serif; font-weight:600; font-size:1rem;}
+
+  /* ===== USP strip ===== */
+  .usp{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:26px 0;
+    margin-top:56px;
+  }
+  .usp-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+  }
+  .usp-item{
+    display:flex; align-items:flex-start; gap:12px;
+  }
+  .usp-item .ic{
+    width:38px;height:38px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:10px;
+    background:var(--cream-deep);
+    color:var(--olive-dark);
+  }
+  .usp-item h4{font-size:0.95rem; font-weight:700; margin-bottom:2px;}
+  .usp-item p{font-size:0.85rem; color:var(--ink-soft);}
+
+  /* ===== Section shell ===== */
+  section{padding:88px 0;}
+  .section-head{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 48px;
+  }
+  .section-head h2{
+    font-size:2.5rem;
+    font-weight:600;
+    margin-top:4px;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+
+  /* ===== Menu tabs ===== */
+  .tabs{
+    display:flex; justify-content:center; gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:44px;
+  }
+  .tab-btn{
+    padding:10px 22px;
+    border-radius:100px;
+    border:1.5px solid var(--line);
+    background:var(--card);
+    font-weight:600;
+    font-size:0.92rem;
+    cursor:pointer;
+    color:var(--ink-soft);
+    transition:all .2s;
+  }
+  .tab-btn.active{
+    background:var(--olive);
+    border-color:var(--olive);
+    color:#fff;
+  }
+  .tab-panel{display:none;}
+  .tab-panel.active{display:block; animation:fadeIn .35s ease;}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);}}
+
+  .menu-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .menu-card{
+    background:var(--card);
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    transition:transform .22s ease, box-shadow .22s ease;
+    display:flex; flex-direction:column;
+  }
+  .menu-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .menu-card .photo{
+    position:relative;
+    aspect-ratio:4/3.1;
+    overflow:hidden;
+  }
+  .menu-card .photo img{width:100%; height:100%; object-fit:cover;}
+  .price-badge{
+    position:absolute; top:12px; right:12px;
+    background:var(--black); color:#fff;
+    border-radius:50%;
+    width:52px; height:52px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:0.92rem;
+    box-shadow:0 6px 14px -4px rgba(0,0,0,0.4);
+  }
+  .price-badge.wa{
+    width:auto; height:auto; border-radius:100px;
+    padding:7px 12px;
+    font-family:'Inter',sans-serif;
+    font-size:0.72rem;
+    font-weight:700;
+    letter-spacing:0.01em;
+  }
+  .menu-card .body{padding:18px 20px 22px; flex:1; display:flex; flex-direction:column;}
+  .menu-card h3{font-family:'Fraunces',serif; font-size:1.15rem; font-weight:600; margin-bottom:8px;}
+  .menu-card p{font-size:0.88rem; color:var(--ink-soft); flex:1;}
+  .menu-card .tag{
+    display:inline-block;
+    margin-top:12px;
+    font-size:0.72rem;
+    color:var(--olive-dark);
+    background:rgba(92,122,62,0.12);
+    padding:4px 10px;
+    border-radius:100px;
+    font-weight:600;
+    width:fit-content;
+  }
+  .menu-note{
+    text-align:center;
+    margin-top:36px;
+    font-size:0.92rem;
+    color:var(--ink-soft);
+  }
+  .menu-note a{color:var(--terracotta); font-weight:600; text-decoration:none;}
+
+  /* ===== Cara pesan ===== */
+  .steps{
+    background:var(--ink);
+    color:var(--cream);
+    border-radius:32px;
+  }
+  .steps .wrap{padding:64px 28px;}
+  .steps .section-head p{color:rgba(251,240,227,0.72);}
+  .steps .section-head .eyebrow{color:#E8A87C;}
+  .step-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .step{
+    padding:28px 24px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:20px;
+  }
+  .step .num{
+    font-family:'Fraunces',serif;
+    font-size:2.2rem;
+    font-weight:700;
+    color:#E8A87C;
+    line-height:1;
+  }
+  .step h3{margin-top:14px; font-family:'Fraunces',serif; font-size:1.2rem; font-weight:600;}
+  .step p{margin-top:8px; font-size:0.9rem; color:rgba(251,240,227,0.68);}
+
+  /* ===== Order channels ===== */
+  .channels-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .channel-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:32px 26px;
+    text-align:center;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .channel-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
+  .channel-icon{
+    width:60px; height:60px;
+    border-radius:16px;
+    margin:0 auto 18px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem;
+    color:#fff;
+  }
+  .ic-wa{background:#3EA05A;}
+  .ic-gofood{background:#FA3D3D;}
+  .ic-gojek{background:#00AA13;}
+  .channel-card h3{font-family:'Fraunces',serif; font-size:1.25rem; font-weight:600; margin-bottom:8px;}
+  .channel-card p{font-size:0.9rem; color:var(--ink-soft); margin-bottom:20px;}
+
+  /* ===== Footer ===== */
+  footer{
+    border-top:1px solid var(--line);
+    padding:56px 0 30px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    padding-bottom:36px;
+  }
+  .footer-logo{
+    font-family:'Fraunces',serif;
+    font-size:1.4rem;
+    font-weight:600;
+    letter-spacing:0.03em;
+  }
+  .footer-logo span{color:var(--olive);}
+  .footer-grid p{color:var(--ink-soft); font-size:0.9rem; margin-top:12px; max-width:280px;}
+  .footer-col h5{
+    font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--ink-soft); margin-bottom:14px; font-weight:700;
+  }
+  .footer-col a, .footer-col p.item{
+    display:block;
+    font-size:0.92rem;
+    color:var(--ink);
+    text-decoration:none;
+    margin-bottom:10px;
+  }
+  .footer-col a:hover{color:var(--terracotta);}
+  .footer-bottom{
+    border-top:1px solid var(--line);
+    padding-top:22px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:0.82rem;
+    color:var(--ink-soft);
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr; gap:44px;}
+    .hero-copy h1{font-size:2.5rem;}
+    .hero-photo{order:-1; max-width:380px; margin:0 auto;}
+    .usp-grid{grid-template-columns:repeat(2,1fr);}
+    .menu-grid{grid-template-columns:repeat(2,1fr);}
+    .step-grid{grid-template-columns:1fr;}
+    .channels-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr; gap:28px;}
+    .navlinks{display:none;}
+    .nav-cta .btn-outline{display:none;}
+  }
+  @media (max-width:560px){
+    .wrap{padding:0 18px;}
+    .hero{padding:36px 0 20px;}
+    .hero-copy h1{font-size:2.05rem;}
+    section{padding:60px 0;}
+    .section-head h2{font-size:1.9rem;}
+    .menu-grid{grid-template-columns:1fr;}
+    .usp-grid{grid-template-columns:1fr;}
+    .tabs{gap:8px;}
+    .tab-btn{padding:8px 16px; font-size:0.85rem;}
+    .steps .wrap{padding:44px 20px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+
+  :focus-visible{outline:3px solid var(--terracotta); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#top">
+      <svg class="sprig" width="26" height="26" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 34C10 24 16 16 30 8" stroke="#5C7A3E" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="15" cy="21" rx="5" ry="3" transform="rotate(-35 15 21)" fill="#5C7A3E"/>
+        <ellipse cx="22" cy="15" rx="4.5" ry="2.8" transform="rotate(-35 22 15)" fill="#7AA05A"/>
+        <ellipse cx="28" cy="10" rx="4" ry="2.5" transform="rotate(-35 28 10)" fill="#5C7A3E"/>
+      </svg>
+      NASIBOX<span>.MALANG</span>
+    </a>
+    <nav class="navlinks">
+      <a href="#menu">Menu</a>
+      <a href="#cara-pesan">Cara Pesan</a>
+      <a href="#pesan">Pesan Online</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-outline" href="https://wa.me/6281249309881" target="_blank" rel="noopener">Chat WA</a>
+      <a class="btn btn-primary" href="#pesan">Pesan Sekarang</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">serving good food, setiap hari</span>
+        <h1 class="display">Nasi box enak buat <em>hari sibukmu</em>, siap anter ke Malang & Batu.</h1>
+        <p class="lead">Nasibox.Malang bikin nasi box, snack box, sampai nasi kotak buat acara — dimasak fresh tiap hari dan bisa dipesan langsung dari WhatsApp, GoFood, atau GoJek.</p>
+        <div class="hero-cta">
+          <a class="btn btn-dark" href="#pesan">Lihat Menu & Pesan</a>
+          <a class="btn btn-outline" href="https://wa.me/6281249309881" target="_blank" rel="noopener">Tanya-tanya dulu di WA</a>
+        </div>
+        <div class="hero-hours">
+          <span class="dot"></span>
+          Buka setiap hari, 08.00 – 20.00 WIB
+        </div>
+      </div>
+      <div class="hero-photo">
+        <div class="frame">
+          <img src="assets/signature-pedas-manis.jpeg" alt="Nasibox Ayam Pedas Manis, menu andalan Nasibox.Malang">
+        </div>
+        <div class="price-sticker sticker-1">
+          <span class="amt">16K</span>
+          <span class="lbl">mulai</span>
+        </div>
+        <div class="sig-tag">
+          <span class="script">Our Signature</span>
+          <span class="name">Ayam Pedas Manis</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= USP STRIP ================= -->
+  <div class="usp">
+    <div class="wrap usp-grid">
+      <div class="usp-item">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <div><h4>Buka Harian</h4><p>08.00–20.00 WIB, setiap hari.</p></div>
+      </div>
+      <div class="usp-item">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M3 12l4-5M3 12l4 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h4>Antar Online</h4><p>Tinggal pesan lewat GoFood atau GoJek.</p></div>
+      </div>
+      <div class="usp-item">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20V10l8-6 8 6v10" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h4>Bisa Buat Acara</h4><p>Nasi kotak & tumpeng mini untuk catering.</p></div>
+      </div>
+      <div class="usp-item">
+        <div class="ic">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-9.5-9C1 8.4 3 5 6.5 5c2 0 3.4 1.2 4 2 .6-.8 2-2 4-2C18 5 20 8.4 18.5 12c-2.5 4.4-6.5 9-6.5 9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        </div>
+        <div><h4>Malang & Batu</h4><p>Area layanan pengantaran kami.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MENU ================= -->
+  <section id="menu">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">yuk mampir</span>
+        <h2 class="display">Menu Nasibox.Malang</h2>
+        <p>Semua harga dalam Rupiah. Sendok/sumpit sudah termasuk sesuai keterangan tiap menu.</p>
+      </div>
+
+      <div class="tabs" role="tablist">
+        <button class="tab-btn active" data-tab="nasibox">Nasi Box</button>
+        <button class="tab-btn" data-tab="snack">Snack</button>
+        <button class="tab-btn" data-tab="kotak">Nasi Kotak (Catering)</button>
+        <button class="tab-btn" data-tab="minuman">Minuman</button>
+      </div>
+
+      <!-- NASI BOX -->
+      <div class="tab-panel active" data-panel="nasibox">
+        <div class="menu-grid">
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/signature-pedas-manis.jpeg" alt="Nasibox Ayam Pedas Manis">
+              <div class="price-badge">16K</div>
+            </div>
+            <div class="body">
+              <h3>Nasibox Ayam Pedas Manis</h3>
+              <p>Ayam crispy tanpa tulang digoreng tepung dengan saus pedas manis dan sayuran, disajikan di atas nasi.</p>
+              <span class="tag">Our Signature</span>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/ayam-teriyaki.png" alt="Nasibox Ayam Teriyaki">
+              <div class="price-badge">16K</div>
+            </div>
+            <div class="body">
+              <h3>Nasibox Ayam Teriyaki</h3>
+              <p>Ayam crispy tanpa tulang dengan saus teriyaki & mayonaise di atas nasi. Free sendok.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/nasgor-baso.png" alt="Nasi Goreng Baso Sapi">
+              <div class="price-badge">14K</div>
+            </div>
+            <div class="body">
+              <h3>Nasigoreng Baso Sapi</h3>
+              <p>Nasi goreng resep khas Nasibox.Malang dengan telur, baso sapi, dan sosis. Free sendok.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/mie-rumpik.jpeg" alt="Mie Rumpik Pedas">
+              <div class="price-badge">14K</div>
+            </div>
+            <div class="body">
+              <h3>Mie Rumpik Pedas</h3>
+              <p>Mie urai disajikan pedas (level 0–5) dengan daging slice dan kerupuk. Free sumpit.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/ayam-geprek.jpeg" alt="Nasi Ayam Geprek">
+              <div class="price-badge">16K</div>
+            </div>
+            <div class="body">
+              <h3>Nasi Ayam Geprek</h3>
+              <p>Ayam crispy digeprek dengan sambal, disajikan dengan nasi dan timun.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/mentai-egg.jpeg" alt="Nasibox Mentai Egg">
+              <div class="price-badge">13K</div>
+            </div>
+            <div class="body">
+              <h3>Nasibox Mentai Egg</h3>
+              <p>Scrambled egg dengan saus mentai dan taburan nori di atas toast dan nasi. Free sendok.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/steak-ayam.png" alt="Steak Ayam">
+              <div class="price-badge">21K</div>
+            </div>
+            <div class="body">
+              <h3>Steak Ayam</h3>
+              <p>Ayam crispy, kentang goreng, dan sayuran dengan saus BBQ.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/geprek-sambal-ijo.png" alt="Nasi Ayam Geprek Sambal Ijo">
+              <div class="price-badge">16K</div>
+            </div>
+            <div class="body">
+              <h3>Nasi Ayam Geprek Sambal Ijo</h3>
+              <p>Ayam crispy dengan sambal ijo khas, disajikan dengan nasi. Free sendok.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SNACK -->
+      <div class="tab-panel" data-panel="snack">
+        <div class="menu-grid">
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/siomay-goreng.png" alt="Siomay Goreng isi 5">
+              <div class="price-badge">16K</div>
+            </div>
+            <div class="body">
+              <h3>Siomay Goreng (Isi 5)</h3>
+              <p>Siomay goreng renyah, disajikan dengan saus khas Nasibox.Malang.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/snack-box.png" alt="Snack Box">
+              <div class="price-badge">14K</div>
+            </div>
+            <div class="body">
+              <h3>Snack Box</h3>
+              <p>Aneka gorengan pilihan dalam satu box, cocok buat teman santai atau meeting.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/kentang-noriyaki.png" alt="Kentang Goreng Noriyaki">
+              <div class="price-badge">13K</div>
+            </div>
+            <div class="body">
+              <h3>Kentang Goreng Noriyaki</h3>
+              <p>Kentang goreng bumbu noriyaki khas Nasibox.Malang, dengan saus sambal.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/dimsum.jpeg" alt="Dimsum isi 5">
+              <div class="price-badge">14K</div>
+            </div>
+            <div class="body">
+              <h3>Dimsum (Isi 5)</h3>
+              <p>Dimsum dengan isian ayam dan udang, free saus.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- NASI KOTAK / CATERING -->
+      <div class="tab-panel" data-panel="kotak">
+        <div class="menu-grid">
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/nasi-urap.jpeg" alt="Nasi Urap Ayam Merah">
+              <div class="price-badge wa">Chat WA</div>
+            </div>
+            <div class="body">
+              <h3>Nasi Urap Ayam Merah</h3>
+              <p>Ayam bumbu rujak, tempe bacem, urap, nasi, dan sambal.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/nasi-bandeng.jpeg" alt="Nasi Bandeng Presto">
+              <div class="price-badge wa">Chat WA</div>
+            </div>
+            <div class="body">
+              <h3>Nasi Bandeng Presto</h3>
+              <p>Bandeng presto, tahu kecambah, lalapan, dan sambal.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/nasi-serundeng.png" alt="Nasi Ayam Serundeng">
+              <div class="price-badge wa">Chat WA</div>
+            </div>
+            <div class="body">
+              <h3>Nasi Ayam Serundeng</h3>
+              <p>Ayam serundeng, kering tempe, sambal goreng kentang, bakmi, sambal, dan nasi.</p>
+            </div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/tumpeng-mini.png" alt="Tumpeng Mini">
+              <div class="price-badge wa">Chat WA</div>
+            </div>
+            <div class="body">
+              <h3>Tumpeng Mini</h3>
+              <p>Nasi kuning, ayam crispy, bakmi, dan kering tempe — pas buat syukuran kecil.</p>
+            </div>
+          </div>
+
+        </div>
+        <p class="menu-note">Harga nasi kotak & tumpeng menyesuaikan jumlah pesanan. <a href="https://wa.me/6281249309881?text=Halo%20Nasibox.Malang%2C%20saya%20mau%20tanya%20harga%20nasi%20kotak%20untuk%20acara" target="_blank" rel="noopener">Tanyakan harga via WhatsApp →</a></p>
+      </div>
+
+      <!-- MINUMAN -->
+      <div class="tab-panel" data-panel="minuman">
+        <div class="menu-grid">
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/taro-drink.png" alt="Taro Drink">
+              <div class="price-badge">10K</div>
+            </div>
+            <div class="body"><h3>Taro Drink</h3><p>Minuman taro creamy, segar buat teman makan siang.</p></div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/choco-brew.png" alt="Choco Brew">
+              <div class="price-badge">10K</div>
+            </div>
+            <div class="body"><h3>Choco Brew</h3><p>Coklat creamy dingin, favorit segala usia.</p></div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/mango-blend.png" alt="Mango Blend">
+              <div class="price-badge">10K</div>
+            </div>
+            <div class="body"><h3>Mango Blend</h3><p>Mangga segar diblend creamy dan manis alami.</p></div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/esteh.png" alt="Es Teh">
+              <div class="price-badge">4K</div>
+            </div>
+            <div class="body"><h3>Esteh</h3><p>Teh manis dingin, klasik dan menyegarkan.</p></div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/es-jeruk.png" alt="Es Jeruk">
+              <div class="price-badge">4K</div>
+            </div>
+            <div class="body"><h3>Es Jeruk</h3><p>Perasan jeruk segar dengan es batu.</p></div>
+          </div>
+
+          <div class="menu-card">
+            <div class="photo">
+              <img src="assets/es-guava.png" alt="Es Guava">
+              <div class="price-badge">4K</div>
+            </div>
+            <div class="body"><h3>Es Guava</h3><p>Rasa jambu manis segar, favorit anak-anak.</p></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= CARA PESAN ================= -->
+  <section id="cara-pesan">
+    <div class="wrap">
+      <div class="steps">
+        <div class="wrap">
+          <div class="section-head">
+            <span class="eyebrow">gampang kok</span>
+            <h2 class="display">Cara Pesan</h2>
+            <p>Tiga langkah, nasi box siap sampai di depanmu.</p>
+          </div>
+          <div class="step-grid">
+            <div class="step">
+              <span class="num">01</span>
+              <h3>Pilih Menu</h3>
+              <p>Lihat-lihat menu di atas — mau nasi box harian, snack, atau nasi kotak buat acara.</p>
+            </div>
+            <div class="step">
+              <span class="num">02</span>
+              <h3>Pesan lewat Channel Favoritmu</h3>
+              <p>Order langsung via WhatsApp, atau cari "Nasibox.Malang" di GoFood / GoJek.</p>
+            </div>
+            <div class="step">
+              <span class="num">03</span>
+              <h3>Kami Masak & Antar</h3>
+              <p>Pesanan dimasak fresh dan diantar ke lokasimu di area Malang & Batu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PESAN ONLINE ================= -->
+  <section id="pesan">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">pesan sekarang</span>
+        <h2 class="display">Pesan Online Lewat 3 Channel</h2>
+        <p>Pilih yang paling gampang buat kamu.</p>
+      </div>
+      <div class="channels-grid">
+
+        <div class="channel-card">
+          <div class="channel-icon ic-wa">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.6-6.7L20 4l-1 3.6A8 8 0 0 1 20 12Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M8.5 9.5c.3 2.5 2.5 4.7 5 5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>Order langsung, tanya menu, atau minta harga catering nasi kotak.</p>
+          <a class="btn btn-primary" style="background:#3EA05A;width:100%;justify-content:center;" href="https://wa.me/6281249309881" target="_blank" rel="noopener">Chat +62 812-4930-9881</a>
+        </div>
+
+        <div class="channel-card">
+          <div class="channel-icon ic-gofood">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 3v9a3 3 0 0 0 3 3v6M5 3v6M8 3v6M11 3v9M17 3c-2.2 0-4 2.5-4 6s1.8 6 4 6 4-2.5 4-6-1.8-6-4-6Zm0 12v6" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>GoFood</h3>
+          <p>Cari "Nasibox.Malang" di aplikasi Gojek, tab GoFood.</p>
+          <a class="btn btn-primary" style="background:#FA3D3D;width:100%;justify-content:center;" href="https://gofood.co.id/id/malang/search?q=nasibox.malang" target="_blank" rel="noopener">Buka GoFood</a>
+        </div>
+
+        <div class="channel-card">
+          <div class="channel-icon ic-gojek">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/><path d="M9 15l3-6 3 6M10 13h4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <h3>GoJek / GoSend</h3>
+          <p>Mau titip antar pakai GoSend atau lewat aplikasi Gojek? Bisa juga.</p>
+          <a class="btn btn-primary" style="background:#00AA13;width:100%;justify-content:center;" href="https://www.gojek.com/en-id/" target="_blank" rel="noopener">Buka Gojek</a>
+        </div>
+
+      </div>
+      <p class="menu-note">Belum ketemu tokonya di aplikasi? Chat kami dulu di WhatsApp, ya — <a href="https://wa.me/6281249309881" target="_blank" rel="noopener">+62 812-4930-9881</a>.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer id="kontak">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">NASIBOX<span>.MALANG</span></div>
+        <p>Nasi box, snack box, dan catering nasi kotak rumahan khas Malang. Dimasak fresh setiap hari, siap antar ke Malang & Batu.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Kontak</h5>
+        <a href="https://wa.me/6281249309881" target="_blank" rel="noopener">WhatsApp: +62 812-4930-9881</a>
+        <a href="https://www.instagram.com/nasibox.malang/" target="_blank" rel="noopener">Instagram: @nasibox.malang</a>
+      </div>
+      <div class="footer-col">
+        <h5>Jam & Area</h5>
+        <p class="item">Buka setiap hari, 08.00–20.00 WIB</p>
+        <p class="item">Antar area Malang & Batu</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Nasibox.Malang. Semua harga dalam Rupiah.</span>
+      <span>Serving good food.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.tab-panel');
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelector('.tab-panel[data-panel="' + btn.dataset.tab + '"]').classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
